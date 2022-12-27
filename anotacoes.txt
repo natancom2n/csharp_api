@@ -39,13 +39,47 @@ Diferenca de Dotnet ou Dornet Core?
         app.MapGet("/user", () => "Natan");
         app.MapPost("/user", () => "Natan Post");
 
-        A. Modificar Header:
+        A. Modificar Header ( response):
         app.MapGet("/Add", (HttpResponse response) => response.Headers.Add("Teste", "Natan Alves"));
 
         B. Usando o exemplo acima enviando também o body:
-
         app.MapGet("/Add", (HttpResponse response) =>
             {
                 response.Headers.Add("Teste", "Natan Alves");
                 return new { Name = "Natan Alves", Age = 40 };
             });
+        
+        C. Enviando (post) via Query:
+            //api.app.com/users?datastart={date}&dataend={date}
+            app.MapGet("/getproduct", ([FromQuery] string dateStart, [FromQuery] string dateEnd)=> {
+                return dateStart + " + " + dateEnd;
+            });
+            //url exemplo: http://localhost:3000/getproduct?datestart=x&dateend=y
+        
+        D. Enviados (post) via Route:
+            //api.app.com/users/{code}
+            app.MapGet("/getproduct{code}", ([FromRoute]string code)=> {
+              return code;
+            });
+            //url exemplo: http://localhost:3000/getproduct{x}  
+
+        E. Enviando parametros via Header ( request ):
+            app.MapGet("/getproducts", (HttpRequest req) =>  {
+                return req.Headers["code"].ToString();
+            });
+
+4) CRUD ( sem DB ):
+  Crear repositorio ProductRepo:
+
+      public class ProductRepo{
+        public Lista<Product> Products  { get; set; }
+        public void Add(Product product){
+            if (Products == null )
+                Products = new List<Product>();   
+            Products.Add(product); 
+        }
+        public Product GetBy(string code){
+            return Products.First(p => p.code == code);
+        }
+    }
+  
