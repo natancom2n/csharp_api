@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "9OeObucERptq7pckgxeiGuwg2Q6R6uDlNZAcnW8ph3nln57dWesX0EtmFvozDoyibIFwnZD5DO5rFX5LfxzZSQ==",
+  "dgSpecHash": "22CkQMSW/JbD/14YYMIcXeNT9bEzZrb2k5V9aKbhpvNA5XwAh8NF6hlJwMzw32+fj6bxU9eyfDl26flvbqI/Dg==",
   "success": true,
   "projectFilePath": "/Volumes/Dados/Projects/csharp_api/csharp_api.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/natan/.nuget/packages/fluentcolorconsole/2.0.1/fluentcolorconsole.2.0.1.nupkg.sha512"
+  ],
   "logs": []
 }

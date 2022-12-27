@@ -1,0 +1,51 @@
+Diferenca de Dotnet ou Dornet Core?
+  a) Dotnet Framework funciona somente em windows 
+  b) Dotnet Core atualizacao para funcionar em outros OS alem de:
+    atualizar mais rapido
+    updates a todo momento
+    multi plataforma
+    sem obrigatoriedade de utilizar o Visual Studio 
+    funciona em um docker
+    perfomatico
+    suporte a cloud
+    configuracoes sao em json
+
+
+1) PORTAS: Para modificar as portas acesse dentro de Properties, arquivo launchSettings.json
+    e modificar 
+
+    "profiles": {
+    "http": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "applicationUrl": "http://localhost:3000",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "https": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "applicationUrl": "https://localhost:3001;http://localhost:3000",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+2) Dotnet watch run 
+3) END POINT:
+    Padrões: 
+        app.MapGet("/", () => "Hello World!");
+        app.MapGet("/user", () => "Natan");
+        app.MapPost("/user", () => "Natan Post");
+
+        A. Modificar Header:
+        app.MapGet("/Add", (HttpResponse response) => response.Headers.Add("Teste", "Natan Alves"));
+
+        B. Usando o exemplo acima enviando também o body:
+
+        app.MapGet("/Add", (HttpResponse response) =>
+            {
+                response.Headers.Add("Teste", "Natan Alves");
+                return new { Name = "Natan Alves", Age = 40 };
+            });
